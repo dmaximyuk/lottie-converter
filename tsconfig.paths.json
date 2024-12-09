@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "assets": ["assets"],
+      "core": ["core"],
+      "uikit": ["uikit"],
+      "components": ["components"],
+      "translation": ["translation"],
+      "types": ["types"],
+      "styles": ["styles"],
+      "functions": ["functions"],
+      "routes": ["routes"],
+      "models": ["models"]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.Typography
+  font:
+    family: var(--font-family)
+
+  color: var(--text-primary)
+
+  &__wrapper
+    &--plain
+      margin: 0
+
+    &--caps
+      text-transform: uppercase
+
+    &--weight
+      @for $i from 1 through 3
+        &-#{$i}
+          font:
+            weight: var(--font-weight--accent#{$i})

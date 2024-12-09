@@ -1,0 +1,6 @@
+.Caption
+  &__wrapper
+    @for $i from 1 through 2
+      &--#{$i}
+        font-size: var(--caption#{$i}--font-size)
+        line-height: var(--caption#{$i}--line-height)

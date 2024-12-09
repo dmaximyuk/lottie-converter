@@ -1,0 +1,6 @@
+.Subheadline
+  &__wrapper
+    @for $i from 1 through 2
+      &--#{$i}
+        font-size: var(--subheadline#{$i}--font_size)
+        line-height: var(--subheadline#{$i}--line_height)

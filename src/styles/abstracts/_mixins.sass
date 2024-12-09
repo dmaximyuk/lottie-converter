@@ -1,0 +1,10 @@
+@mixin respond($mode)
+  @if $mode == "tablet"
+    @media screen and (min-width: 768px)
+      @content
+  @else if $mode == "laptop"
+    @media screen and (min-width: 1024px)
+      @content
+  @else if $mode == "desktop"
+    @media screen and (min-width: 1440px)
+      @content
