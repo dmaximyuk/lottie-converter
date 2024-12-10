@@ -13,12 +13,6 @@ import { motion } from "motion/react";
 import { useDispatch } from "react-redux";
 import { dndFilesActions } from "store/dndFiles";
 
-interface UploadedFile {
-  name: string;
-  size: number;
-  type: string;
-}
-
 interface FileLoaderProps extends AllHTMLAttributes<HTMLElement> {}
 
 const FileLoader: FC<FileLoaderProps> = () => {

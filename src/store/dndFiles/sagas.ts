@@ -62,37 +62,36 @@ function handleProcessing(file: File): Promise<ProcessingFileResponse> {
         | "lottie"
         | "json"
         | undefined;
-      if (!event.target?.result) {
+
+      if (!event.target?.result || !ext) {
         reject(new Error("File read error."));
         return;
       }
 
-      if (ext) {
-        const arrayBuffer = event.target.result as ArrayBuffer;
-        const uint8Array = new Uint8Array(arrayBuffer);
+      const arrayBuffer = event.target.result as ArrayBuffer;
+      const uint8Array = new Uint8Array(arrayBuffer);
 
-        switch (ext) {
-          case "tgs":
-            gunzip(uint8Array, async (err, decompressed) => {
-              if (err) {
-                reject(new Error(`Error parsing data`));
-                return;
-              }
-
-              resolve(createResponse(strFromU8(decompressed), file, event));
-            });
-            break;
-          case "lottie":
-            console.log(file, event);
-            break;
-          case "json":
-            if (uint8Array.length >= 1) {
-              resolve(createResponse(strFromU8(uint8Array), file, event));
-            } else {
+      switch (ext) {
+        case "tgs":
+          gunzip(uint8Array, async (err, decompressed) => {
+            if (err) {
               reject(new Error(`Error parsing data`));
+              return;
             }
-            break;
-        }
+
+            resolve(createResponse(strFromU8(decompressed), file, event));
+          });
+          break;
+        case "lottie":
+          console.log(file, event);
+          break;
+        case "json":
+          if (uint8Array.length >= 1) {
+            resolve(createResponse(strFromU8(uint8Array), file, event));
+          } else {
+            reject(new Error(`Error parsing data`));
+          }
+          break;
       }
     };
 
