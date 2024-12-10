@@ -1,31 +1,30 @@
-import { type FC } from "react";
+import "./Header.sass";
+
+import { type AllHTMLAttributes, type FC } from "react";
 import { useTranslation } from "i18nano";
 
-import { Container, Typography } from "uikit";
-import { Helmet } from "react-helmet";
+import { Flex, Title } from "uikit";
+import { Link } from "react-router-dom";
 
-import type { HeaderProps } from "./Header.interface";
+export interface HeaderProps extends AllHTMLAttributes<HTMLElement> {}
 
-export const Header: FC<HeaderProps> = () => {
+const Header: FC<HeaderProps> = () => {
   const t = useTranslation();
 
   return (
-    <>
-      <Helmet
-        htmlAttributes={{
-          lang: "ru",
-        }}
+    <nav className="Header">
+      <Flex
+        className="Header__container"
+        horizontal="space-between"
+        vertical="center"
       >
-        <meta name="description" content={t("app.description")} />
-        <title>{t("app.name")}</title>
-      </Helmet>
-      <Container.Outer tagName="header">
-        <Container.Inner>
-          <Typography tagName="h1" isBold>
-            Header
-          </Typography>
-        </Container.Inner>
-      </Container.Outer>
-    </>
+        <Link to={"/"}>
+          <Title weight="1">ZLottie</Title>
+        </Link>
+        <Title weight="1">Payments</Title>
+      </Flex>
+    </nav>
   );
 };
+
+export default Header;

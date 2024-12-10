@@ -11,8 +11,6 @@ export const defaultConfig: InlineConfig = {
   assetsInclude: ["**/*.tgs"],
   plugins: [tsPaths(), core(), svgr()],
   resolve: {
-    alias: {
-      "@styles": path.resolve(__dirname, "src/styles"),
-    },
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
   },
 };

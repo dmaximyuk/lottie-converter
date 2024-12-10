@@ -3,13 +3,11 @@ import "./Flex.sass";
 import { type AllHTMLAttributes, type ForwardedRef, forwardRef } from "react";
 import classNames from "classnames";
 
-type FlexPlacement = "center" | "start" | "end";
+type FlexPlacement = "space-between" | "center" | "start" | "end";
 type FlexDirection = "row" | "column";
 type FlexUnits = "px" | "em" | "rem";
 
-export interface FlexProps extends AllHTMLAttributes<HTMLElement> {
-  /* default: "15" */
-  padding?: number | string;
+export interface FlexProps extends AllHTMLAttributes<HTMLDivElement> {
   /* default: "normal" */
   gap?: number | string;
   /* default: "px" */
@@ -26,7 +24,6 @@ export const Flex = forwardRef(
   (
     {
       reverse = false,
-      padding = 15,
       unit = "px",
       gap,
       className,
@@ -63,7 +60,7 @@ export const Flex = forwardRef(
     const getSize = (num: number | string | undefined) => {
       switch (typeof num) {
         case "string":
-          return padding;
+          return num;
 
         case "number":
           return `${num}${unit}`;
@@ -82,7 +79,6 @@ export const Flex = forwardRef(
             "--direction": getDirection(),
             "--justifyContent": getPlacement(horizontal),
             "--alignItems": getPlacement(vertical),
-            "--padding": getSize(padding),
             "--gap": getSize(gap),
             ...style,
           } as Record<string, unknown>
