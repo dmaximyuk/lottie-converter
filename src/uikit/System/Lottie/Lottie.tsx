@@ -59,25 +59,6 @@ export const LottieWeb: FC<LottieWeb> = (props) => {
     }
   };
 
-  const getLoop = (loop?: boolean) => {
-    if (!loop) {
-      const userAgent = navigator.userAgent;
-      const androidVersionMatch = userAgent.match(/Android\s*([0-9\.]+)/);
-
-      if (androidVersionMatch) {
-        const androidVersion = Number(
-          androidVersionMatch[1]?.replace(/.0/gi, ""),
-        );
-        if (androidVersion) {
-          // console.log("Android version:", androidVersion)
-          if (androidVersion <= 10) return false;
-        }
-      }
-    }
-
-    return loop;
-  };
-
   useEffect(() => {
     if (!props?.animationData && !refContainer?.current) return;
 
@@ -91,7 +72,7 @@ export const LottieWeb: FC<LottieWeb> = (props) => {
       lottie.loadAnimation({
         container: refContainer.current,
         animationData: animation,
-        loop: getLoop(props.loop),
+        loop: true,
         autoplay: props.autoplay ?? true,
         renderer: "svg",
         name: props.animationData,

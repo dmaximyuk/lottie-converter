@@ -2,20 +2,20 @@ import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface DndFilesState {
   isProcessing: boolean;
-  files: File[];
+  files: Array<File>;
+  parsedFiles: Array<ProcessingFileResponse>;
 }
 
-export type LoadFilesPayload = PayloadAction<File[]>;
-export type SetFilesPayload = PayloadAction<File[]>;
+export type LoadFilesPayload = PayloadAction<DndFilesState["files"]>;
+export type SetFilesPayload = PayloadAction<DndFilesState["parsedFiles"]>;
 
 export interface ProcessingFileResponse {
   data: {
-    default: string;
+    default: Uint8Array;
     compressed: Uint8Array;
   };
   file: {
     name: string;
-    ext: string;
     prevSize: number;
     newSize: number;
   };

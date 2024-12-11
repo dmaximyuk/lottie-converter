@@ -9,20 +9,27 @@ import type {
 const initialState: DndFilesState = {
   isProcessing: false,
   files: [],
+  parsedFiles: [],
 };
 
 export const { reducer, actions } = createSlice({
   name: "dndFiles",
   initialState,
   reducers: {
-    loadFiles(s, _: LoadFilesPayload) {},
+    loadFiles(s, a: LoadFilesPayload) {
+      s.files = a.payload;
+      s.isProcessing = true;
+    },
 
-    setFiles(s, f: SetFilesPayload) {
-      s.files = f.payload;
+    setFiles(s, a: SetFilesPayload) {
+      s.parsedFiles = a.payload;
+      s.isProcessing = false;
     },
 
     clear(s) {
+      s.isProcessing = initialState.isProcessing;
       s.files = initialState.files;
+      s.parsedFiles = initialState.parsedFiles;
     },
   },
 });

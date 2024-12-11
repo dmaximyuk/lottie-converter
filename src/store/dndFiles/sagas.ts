@@ -1,5 +1,11 @@
-import { all, call, takeLatest } from "redux-saga/effects";
-import { deflate, inflate, gunzip, strFromU8 } from "fflate";
+import { all, call, put, take, takeLatest } from "redux-saga/effects";
+import { inflate, gunzip, strFromU8, strToU8 } from "fflate";
+// import Archiver from "archiver";
+// const archive = Archiver("zip", {
+//   zlib: { level: 9 },
+// });
+
+import zlib from "zlib";
 
 import { dndFilesActions } from "./index";
 
@@ -10,7 +16,6 @@ async function createResponse(
   file: File,
   event: ProgressEvent<FileReader>,
 ): Promise<ProcessingFileResponse> {
-  const ext = "zlottie";
   const compressed = (await deflateData(data)) || [];
 
   return {
@@ -19,21 +24,21 @@ async function createResponse(
       compressed,
     },
     file: {
-      ext,
       name: file.name,
-      newSize: 0,
-      prevSize: 0,
+      newSize: compressed.length,
+      prevSize: data.length,
     },
   };
 }
 
 async function deflateData(data: Uint8Array | string): Promise<Uint8Array> {
-  const encoder = new TextEncoder();
-  const uint8Array = typeof data === "string" ? encoder.encode(data) : data;
+  console.log(strFromU8(data));
+  const uint8Array = typeof data === "string" ? strToU8(data) : data;
 
   return new Promise((resolve, reject) => {
     if (uint8Array.length >= 1) {
-      deflate(uint8Array, (err, data) => {
+      // archive.
+      zlib.deflate(uint8Array, { level: 9 }, (err, data) => {
         if (err) {
           reject(new Error(`Error compress data`));
           return;
@@ -59,7 +64,6 @@ function handleProcessing(file: File): Promise<ProcessingFileResponse> {
     reader.onload = (event) => {
       const ext = file.name.split(".").pop()?.toLowerCase() as
         | "tgs"
-        | "lottie"
         | "json"
         | undefined;
 
@@ -79,15 +83,12 @@ function handleProcessing(file: File): Promise<ProcessingFileResponse> {
               return;
             }
 
-            resolve(createResponse(strFromU8(decompressed), file, event));
+            resolve(createResponse(decompressed, file, event));
           });
-          break;
-        case "lottie":
-          console.log(file, event);
           break;
         case "json":
           if (uint8Array.length >= 1) {
-            resolve(createResponse(strFromU8(uint8Array), file, event));
+            resolve(createResponse(uint8Array, file, event));
           } else {
             reject(new Error(`Error parsing data`));
           }
@@ -106,8 +107,9 @@ function* loadFiles(
 ): Generator<ReturnType<any>, void, any> {
   try {
     const tasks = action.payload.map((file) => call(handleProcessing, file));
-    const results = yield all(tasks);
-    console.log("Все результаты:", results);
+    const results: Array<ProcessingFileResponse> = yield all(tasks);
+
+    yield put(dndFilesActions.setFiles(results));
   } catch (e) {
     console.error(e);
   }

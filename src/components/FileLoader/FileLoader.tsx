@@ -20,7 +20,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
   const [error, setError] = useState<string | null>(null);
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false); // Состояние для анимации при наведении
 
-  const allowedExtensions = [".json", ".tgs", ".lottie"];
+  const allowedExtensions = [".json", ".tgs"];
 
   const isFileAllowed = (file: File): boolean => {
     const fileExtension = file.name
