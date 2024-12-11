@@ -1,18 +1,13 @@
-import { all, call, put, take, takeLatest } from "redux-saga/effects";
-import { inflate, gunzip, strFromU8, strToU8 } from "fflate";
-// import Archiver from "archiver";
-// const archive = Archiver("zip", {
-//   zlib: { level: 9 },
-// });
-
-import zlib from "zlib";
+import { all, call, put, takeLatest } from "redux-saga/effects";
+import { gunzip, strFromU8, strToU8 } from "fflate";
+import pako from "pako";
 
 import { dndFilesActions } from "./index";
 
 import { LoadFilesPayload, ProcessingFileResponse } from "./interface";
 
 async function createResponse(
-  data: ProcessingFileResponse["data"]["default"],
+  data: string,
   file: File,
   event: ProgressEvent<FileReader>,
 ): Promise<ProcessingFileResponse> {
@@ -20,7 +15,7 @@ async function createResponse(
 
   return {
     data: {
-      default: data,
+      default: strToU8(data),
       compressed,
     },
     file: {
@@ -31,21 +26,18 @@ async function createResponse(
   };
 }
 
-async function deflateData(data: Uint8Array | string): Promise<Uint8Array> {
-  console.log(strFromU8(data));
-  const uint8Array = typeof data === "string" ? strToU8(data) : data;
+async function deflateData(data: string): Promise<Uint8Array> {
+  const u8a = strToU8(data);
 
   return new Promise((resolve, reject) => {
-    if (uint8Array.length >= 1) {
-      // archive.
-      zlib.deflate(uint8Array, { level: 9 }, (err, data) => {
-        if (err) {
-          reject(new Error(`Error compress data`));
-          return;
-        }
-
-        resolve(data);
+    if (u8a.length >= 1) {
+      const datas = pako.deflateRaw(u8a, {
+        level: 9,
+        windowBits: 15,
       });
+      const dataw = pako.deflate(u8a, { level: 9 });
+      console.log(datas.length, dataw.length);
+      resolve(datas);
     } else {
       reject(new Error(`Error convert data`));
       return;
@@ -73,22 +65,22 @@ function handleProcessing(file: File): Promise<ProcessingFileResponse> {
       }
 
       const arrayBuffer = event.target.result as ArrayBuffer;
-      const uint8Array = new Uint8Array(arrayBuffer);
+      const u8a = new Uint8Array(arrayBuffer);
 
       switch (ext) {
         case "tgs":
-          gunzip(uint8Array, async (err, decompressed) => {
+          gunzip(u8a, async (err, decompressed) => {
             if (err) {
               reject(new Error(`Error parsing data`));
               return;
             }
 
-            resolve(createResponse(decompressed, file, event));
+            resolve(createResponse(strFromU8(decompressed), file, event));
           });
           break;
         case "json":
-          if (uint8Array.length >= 1) {
-            resolve(createResponse(uint8Array, file, event));
+          if (u8a.length >= 1) {
+            resolve(createResponse(strFromU8(u8a), file, event));
           } else {
             reject(new Error(`Error parsing data`));
           }

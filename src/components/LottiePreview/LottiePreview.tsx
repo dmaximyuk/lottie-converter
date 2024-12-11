@@ -14,7 +14,7 @@ const LottiePreview: FC<LottiePreviewProps> = () => {
     <div>
       {parsedFiles.map((f) => {
         return (
-          <div>
+          <div key={`lottie-preview-item-${f.file.name}`}>
             {/* <LottieWeb animationData={} /> */}
             {`${(f.file.prevSize / 1024).toFixed(1)} KB`}
             {`${(f.file.newSize / 1024).toFixed(1)} KB`}
