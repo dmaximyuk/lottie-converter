@@ -12,7 +12,7 @@ const HowToUse: FC<HowToUseProps> = () => {
   const t = useTranslation();
 
   return (
-    <Page containerClassName="HowToUse__container">
+    <Page className="HowToUse" containerClassName="HowToUse__container">
       <Title weight="1" Component="h1">
         {t("howToUse.title")}
       </Title>

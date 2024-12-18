@@ -1,20 +1,24 @@
 @import "../../styles/abstracts/mixins"
   
 .HowToUse
+  --large-margin: 24px
+  --middle-margin: 12px
+
   &__container
-    padding: 24px 0
+    padding: var(--large-margin) 0
 
     & > h1
-      margin-bottom: 12px
+      margin-bottom: var(--middle-margin)
 
     & > a 
       display: inline-block
-      margin-bottom: 24px 
+      margin-bottom: var(--large-margin)
       
     & > p
-      margin-bottom: 24px
+      margin-bottom: var(--large-margin)
 
     & > ol
+      margin-bottom: var(--large-margin)
       & > li
         list-style-type: decimal
         list-style-position: inside
