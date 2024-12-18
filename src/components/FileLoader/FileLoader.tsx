@@ -126,8 +126,10 @@ const FileLoader: FC<FileLoaderProps> = () => {
               height={32}
               color="var(--color)"
             />
-            <Text>{t("home.dnd.upload")}</Text>
-            <Text>{t("home.dnd.warning")}</Text>
+            <Text className="FileLoader__dnd-text">{t("home.dnd.upload")}</Text>
+            <Text className="FileLoader__dnd-text">
+              {t("home.dnd.warning")}
+            </Text>
           </Flex>
         </motion.div>
 
