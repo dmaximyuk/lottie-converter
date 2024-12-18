@@ -1,9 +1,9 @@
 {
   "name": "zlottie",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
-  "homepage": ".",
+  "homepage": "https://dmaximyuk.github.io/zloottie",
   "keywords": [
     "lottie",
     "zlib",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "vite --host",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && cp dist/index.html dist/404.html",
     "preview": "vite preview",
     "deploy": "gh-pages -d ./dist"
   },
