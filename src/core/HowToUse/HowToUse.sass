@@ -1,9 +1,27 @@
-.Home
-  &_flex
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    padding: 24px
-    box-sizing: border-box
-    height: calc(100vh - var(--header-height))
+@import "../../styles/abstracts/mixins"
+  
+.HowToUse
+  &__container
+    padding: 24px 0
+
+    & > h1
+      margin-bottom: 12px
+
+    & > a 
+      display: inline-block
+      margin-bottom: 24px 
+      
+    & > p
+      margin-bottom: 24px
+
+    & > ol
+      & > li
+        list-style-type: decimal
+        list-style-position: inside
+        margin-bottom: 8px
+        
+        &:last-child
+          margin: 0
+
+        @include respond("tablet")
+          list-style-position: unset

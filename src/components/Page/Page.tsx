@@ -9,11 +9,11 @@ interface PageProps extends AllHTMLAttributes<HTMLElement> {
 
 const Page: FC<PageProps> = (props) => {
   return (
-    <main className="Page">
-      <section className={cn("Page__container", props.containerClassName)}>
+    <section className="Page">
+      <div className={cn("Page__container", props.containerClassName)}>
         {props.children}
-      </section>
-    </main>
+      </div>
+    </section>
   );
 };
 
