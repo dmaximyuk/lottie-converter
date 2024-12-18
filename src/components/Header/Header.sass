@@ -8,5 +8,15 @@
   background: var(--secondary)
   min-height: var(--header-height)
 
+  &__text
+    color: var(--text-primary)
+    transition: .2s
+
+    &:hover
+      color: var(--text-secondary)
+    
+    &:active
+      color: var(--accent)
+
   &__container
     @include respond-container
