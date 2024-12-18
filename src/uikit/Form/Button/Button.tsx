@@ -20,6 +20,7 @@ interface ButtonProps
   size?: "s" | "m" | "l";
   stretched?: boolean;
   allowExtensions?: Array<string>;
+  isSquare?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
@@ -30,6 +31,7 @@ export const Button: FC<ButtonProps> = ({
   stretched = false,
   allowExtensions,
   onChange,
+  isSquare = false,
   className,
   ...props
 }) => {
@@ -56,6 +58,7 @@ export const Button: FC<ButtonProps> = ({
           "Button",
           `Button_color--${type}`,
           `Button_size--${size}`,
+          isSquare && `Button_square`,
           stretched && "Button_stretched",
           className,
         )}

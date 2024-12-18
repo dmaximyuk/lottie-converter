@@ -29,3 +29,16 @@
 
         @include respond("tablet")
           list-style-position: unset
+
+  &__code
+    background: var(--primary)
+    border-radius: 15px
+    overflow: hidden
+
+    & > pre
+      margin: 0 !important
+      padding: 0
+
+    &-header
+      color: var(--background)
+      padding: 6px 12px
