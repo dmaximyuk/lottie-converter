@@ -6,7 +6,7 @@ import { defaultConfig } from "./default.config";
 
 export default defineConfig({
   ...defaultConfig,
-  base: "/zlottie/",
+  base: "/",
   build: {
     sourcemap: false,
     cssCodeSplit: true,
@@ -33,12 +33,6 @@ export default defineConfig({
           }
         },
         experimentalMinChunkSize: 15_000,
-        chunkFileNames: "js/[hash].js",
-        entryFileNames: "js/[hash].js",
-        assetFileNames: (opt) => {
-          const [[, ext]] = Array.from(opt!.name!.matchAll(/.([0-9-a-z]+)$/g));
-          return `${ext}/[hash].${ext}`;
-        },
       },
     },
   },
