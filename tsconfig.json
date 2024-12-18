@@ -33,5 +33,5 @@
     },
     "composite": true
   },
-  "include": ["src", "vite.config"]
+  "include": ["src", "vite.config", "src/**/*.json"]
 }

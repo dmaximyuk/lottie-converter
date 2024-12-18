@@ -1,9 +1,17 @@
 {
-  "name": "template",
+  "name": "zlottie",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "homepage": ".",
+  "keywords": [
+    "lottie",
+    "zlib",
+    "minifier",
+    "typescript",
+    "react",
+    "zlottie"
+  ],
   "engines": {
     "node": "20.17.x"
   },
