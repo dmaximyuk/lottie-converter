@@ -6,6 +6,7 @@ import { useTranslation } from "i18nano";
 import { getRoutePath } from "utils";
 
 import { Link } from "react-router-dom";
+import { TranslationChange } from "components";
 import { Flex, Title, Text } from "uikit";
 
 import { RouteID } from "models";
@@ -27,10 +28,11 @@ const Header: FC<HeaderProps> = () => {
             ZLottie
           </Title>
         </Link>
-        <Flex horizontal="end" vertical="center">
+        <Flex horizontal="end" vertical="center" gap={15}>
           <Link to={getRoutePath(RouteID.HowToUse)}>
             <Text className="Header__text">{t("header.doc")}</Text>
           </Link>
+          <TranslationChange />
         </Flex>
       </Flex>
     </nav>

@@ -17,11 +17,21 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src/",
-    "declaration": false,
-    "declarationMap": false,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "assets": ["assets"],
+      "core": ["core"],
+      "uikit": ["uikit"],
+      "components": ["components"],
+      "translation": ["translation"],
+      "types": ["types"],
+      "styles": ["styles"],
+      "functions": ["functions"],
+      "routes": ["routes"],
+      "models": ["models"],
+      "vars": ["vars"]
+    },
+    "composite": true
   },
-  "extends": "./tsconfig.paths.json",
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "vite.config"]
 }

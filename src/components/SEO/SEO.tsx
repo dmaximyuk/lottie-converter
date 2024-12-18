@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { type FC } from "react";
 
+import { LANG } from "vars";
 import { useTranslation } from "i18nano";
 
 import { Helmet } from "react-helmet";
@@ -10,11 +11,10 @@ const SEO: FC = () => {
   return (
     <Helmet
       htmlAttributes={{
-        lang: "ru",
+        lang: LANG,
       }}
     >
       <meta name="description" content={t("app.description")} />
-      <title>{t("app.name")}</title>
     </Helmet>
   );
 };

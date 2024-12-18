@@ -11,7 +11,7 @@
       "title": "Minifier"
     },
     "dnd": {
-      "title": "Upload Files",
+      "title": "Unpack '.tgs' into '.json' or compress it into ZLottie",
       "upload": "Drag & Drop / Click to choose more!",
       "warning": "Only support: '.tgs / .json'. Max file size — 10MB."
     }
