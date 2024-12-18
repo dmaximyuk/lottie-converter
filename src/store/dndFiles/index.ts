@@ -7,9 +7,7 @@ import type {
 } from "./interface";
 
 const initialState: DndFilesState = {
-  isProcessing: false,
-  files: [],
-  parsedFiles: [],
+  files: {},
 };
 
 export const { reducer, actions } = createSlice({
@@ -17,19 +15,19 @@ export const { reducer, actions } = createSlice({
   initialState,
   reducers: {
     loadFiles(s, a: LoadFilesPayload) {
-      s.files = a.payload;
-      s.isProcessing = true;
+      a.payload.map((f) => {
+        s.files[f.id] = { ...f, processed: null };
+      });
     },
 
     setFiles(s, a: SetFilesPayload) {
-      s.parsedFiles = a.payload;
-      s.isProcessing = false;
+      a.payload.map((c) => {
+        s.files[c.id].processed = c.processed;
+      });
     },
 
     clear(s) {
-      s.isProcessing = initialState.isProcessing;
       s.files = initialState.files;
-      s.parsedFiles = initialState.parsedFiles;
     },
   },
 });

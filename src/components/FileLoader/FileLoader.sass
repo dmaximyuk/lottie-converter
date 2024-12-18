@@ -1,20 +1,41 @@
+@import "../../styles/abstracts/_mixins"
+
 .FileLoader
+  --dnd-transition-speed: 0.3s
   width: 100%
-  aspect-ratio: 3 / 1
+  max-width: 800px
   overflow: hidden
   border-radius: 30px
-  border: 4px dashed var(--br-color)
+  border: 1px solid var(--tertiary)
   transition: border .3s
   background: var(--secondary)
   box-sizing: border-box
+  padding: 20px
+  max-height: calc(100vh - var(--header-height) - 100px)
 
   &__wrapper
+    border: 1px solid var(--color)
     width: 100%
-    height: 100%
+    aspect-ratio: 3 / 3
+    border-radius: 15px
+    color: var(--color)
+    transition: var(--dnd-transition-speed)
+    box-sizing: border-box
+
+    @include respond("tablet") 
+      aspect-ratio: 3 / 0.75
+  
+  &__icon
+    transition: var(--dnd-transition-speed)
 
   &__content
     width: 100%
     height: 100%
+
+  &__container
+    overflow: hidden
+    height: 100%
+    box-sizing: border-box
 
   &__btn
     margin-top: 32px

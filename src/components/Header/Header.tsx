@@ -3,8 +3,8 @@ import "./Header.sass";
 import { type AllHTMLAttributes, type FC } from "react";
 import { useTranslation } from "i18nano";
 
-import { Flex, Title } from "uikit";
 import { Link } from "react-router-dom";
+import { Flex, Title, Text } from "uikit";
 
 export interface HeaderProps extends AllHTMLAttributes<HTMLElement> {}
 
@@ -21,7 +21,11 @@ const Header: FC<HeaderProps> = () => {
         <Link to={"/"}>
           <Title weight="1">ZLottie</Title>
         </Link>
-        <Title weight="1">Payments</Title>
+        <Flex horizontal="end" vertical="center">
+          <Link to={"/how-to-use"}>
+            <Text>Docs</Text>
+          </Link>
+        </Flex>
       </Flex>
     </nav>
   );

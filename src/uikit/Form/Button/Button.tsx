@@ -41,16 +41,6 @@ export const Button: FC<ButtonProps> = ({
 
   return (
     <>
-      {mode === "file-loader" && (
-        <input
-          type="file"
-          multiple
-          accept={(allowExtensions || []).join(",")}
-          style={{ display: "none" }}
-          id={fileInputId}
-          onChange={onChange}
-        />
-      )}
       <DynamicMotionComponent
         // ! any - was used due to compatibility issues
         // ! with the AllHTMLAttributes and Framer-Motion types

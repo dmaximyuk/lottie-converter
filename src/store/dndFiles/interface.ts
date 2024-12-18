@@ -1,22 +1,34 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { ProcessingFileResponse } from "models";
+
+export type FileID = string | number;
+type FileDefault = File;
+type FileCompressed = ProcessingFileResponse | null;
 
 export interface DndFilesState {
-  isProcessing: boolean;
-  files: Array<File>;
-  parsedFiles: Array<ProcessingFileResponse>;
-}
-
-export type LoadFilesPayload = PayloadAction<DndFilesState["files"]>;
-export type SetFilesPayload = PayloadAction<DndFilesState["parsedFiles"]>;
-
-export interface ProcessingFileResponse {
-  data: {
-    default: Uint8Array;
-    compressed: Uint8Array;
-  };
-  file: {
-    name: string;
-    prevSize: number;
-    newSize: number;
+  files: {
+    [key: FileID]: {
+      file: FileDefault;
+      processed: FileCompressed;
+    };
   };
 }
+
+export type LoadFilesPayload = PayloadAction<
+  Array<{
+    id: FileID;
+    file: FileDefault;
+  }>
+>;
+
+export type SetFilesPayload = PayloadAction<
+  Array<{
+    id: FileID;
+    processed: FileCompressed;
+  }>
+>;
+
+export type GenerateResponse = Array<{
+  id: FileID;
+  processed: FileCompressed;
+}>;

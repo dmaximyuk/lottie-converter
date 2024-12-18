@@ -4,24 +4,31 @@ import pako from "pako";
 
 import { dndFilesActions } from "./index";
 
-import { LoadFilesPayload, ProcessingFileResponse } from "./interface";
+import { LoadFilesPayload, FileID, GenerateResponse } from "./interface";
+import { ProcessingFileResponse } from "models";
 
 async function createResponse(
   data: string,
+  fileId: FileID,
   file: File,
   event: ProgressEvent<FileReader>,
-): Promise<ProcessingFileResponse> {
+): Promise<GenerateResponse[0]> {
   const compressed = (await deflateData(data)) || [];
 
   return {
-    data: {
-      default: strToU8(data),
-      compressed,
-    },
-    file: {
-      name: file.name,
-      newSize: compressed.length,
-      prevSize: data.length,
+    id: fileId,
+    processed: {
+      data: {
+        default: strToU8(data),
+        compressed,
+      },
+      file: {
+        name: file.name,
+        size: {
+          default: data.length,
+          compressed: compressed.length,
+        },
+      },
     },
   };
 }
@@ -35,8 +42,7 @@ async function deflateData(data: string): Promise<Uint8Array> {
         level: 9,
         windowBits: 15,
       });
-      const dataw = pako.deflate(u8a, { level: 9 });
-      console.log(datas.length, dataw.length);
+
       resolve(datas);
     } else {
       reject(new Error(`Error convert data`));
@@ -45,7 +51,10 @@ async function deflateData(data: string): Promise<Uint8Array> {
   });
 }
 
-function handleProcessing(file: File): Promise<ProcessingFileResponse> {
+function handleProcessing(
+  fileId: FileID,
+  file: File,
+): Promise<GenerateResponse[0]> {
   if (!(file instanceof File)) {
     throw new TypeError("Your file is not File instance.");
   }
@@ -75,12 +84,14 @@ function handleProcessing(file: File): Promise<ProcessingFileResponse> {
               return;
             }
 
-            resolve(createResponse(strFromU8(decompressed), file, event));
+            resolve(
+              createResponse(strFromU8(decompressed), fileId, file, event),
+            );
           });
           break;
         case "json":
           if (u8a.length >= 1) {
-            resolve(createResponse(strFromU8(u8a), file, event));
+            resolve(createResponse(strFromU8(u8a), fileId, file, event));
           } else {
             reject(new Error(`Error parsing data`));
           }
@@ -98,8 +109,10 @@ function* loadFiles(
   action: LoadFilesPayload,
 ): Generator<ReturnType<any>, void, any> {
   try {
-    const tasks = action.payload.map((file) => call(handleProcessing, file));
-    const results: Array<ProcessingFileResponse> = yield all(tasks);
+    const tasks = action.payload.map((file) =>
+      call(handleProcessing, file.id, file.file),
+    );
+    const results: GenerateResponse = yield all(tasks);
 
     yield put(dndFilesActions.setFiles(results));
   } catch (e) {

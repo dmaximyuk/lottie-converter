@@ -1,0 +1,64 @@
+@import "../../styles/abstracts/_mixins"
+
+.FilePreview
+  display: flex
+  justify-content: space-between
+  width: 100%
+  padding: 15px
+  overflow: hidden
+  border-radius: 15px
+  box-sizing: border-box 
+  border: 1px solid var(--tertiary)
+
+  &__icon
+    display: none
+
+    @include respond("tablet")
+      display: inline-block
+
+  &__text
+    width: 100%
+    overflow: hidden
+
+  &__caption
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    width: 100%
+
+  &__tooltip
+    display: none
+    visibility: hidden
+    background-color: black
+    color: #fff
+    text-align: center
+    padding: 6px 12px
+    border-radius: 6px
+    position: absolute
+    z-index: 1
+    top: -5px
+    right: 105%
+    white-space: nowrap
+    pointer-events: none
+    
+    @include respond("tablet")
+      display: inline-block
+  
+  &__btn
+    &-zlottie, &-json
+      position: relative
+      cursor: pointer
+      border: 1px solid var(--text-secondary)
+      border-radius: 9999px
+      padding: 8px
+
+      & > svg
+        color: var(--text-primary)
+        transition: .2s
+      
+      &:hover 
+        & > svg
+          color: var(--accent)
+
+        & .FilePreview__tooltip
+          visibility: visible
