@@ -1,3 +1,4 @@
-import ru from "./ru-RU.json";
+import ru from "./ru.json";
+import en from "./en.json";
 
-export { ru };
+export { ru, en };

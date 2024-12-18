@@ -67,8 +67,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
 
     const arrayAllFiles = getFiles(allFiles);
     if (arrayAllFiles.length >= 1) {
-      const isUploadedAllFiles = uploadFiles(arrayAllFiles);
-      console.log("status:", isUploadedAllFiles);
+      uploadFiles(arrayAllFiles);
     }
   };
 

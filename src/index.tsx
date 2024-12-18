@@ -11,10 +11,11 @@ import { store } from "store/store";
 
 import { router } from "routes";
 
-import { ru } from "translation";
+import { ru, en } from "translation";
 
 const translations = {
   ru: async () => ru,
+  en: async () => en,
 };
 
 const root = createRoot(document.getElementById("root")!);

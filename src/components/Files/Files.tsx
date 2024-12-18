@@ -26,7 +26,7 @@ const Files: FC = () => {
     return objectToArray(files);
   };
 
-  if (filesWithArray().length <= 1) {
+  if (filesWithArray().length < 1) {
     return null;
   }
 
