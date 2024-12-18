@@ -76,7 +76,6 @@ export const LottieWeb: FC<LottieWebProps> = ({
           autoplay,
           renderer: "svg",
         });
-        // isInitialized.current = true;
         setIsMounted(true);
       } catch (error) {
         console.error("Failed to load animation:", error);
