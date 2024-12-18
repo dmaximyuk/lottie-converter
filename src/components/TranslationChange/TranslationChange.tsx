@@ -1,3 +1,5 @@
+import "./TranslationChange.sass";
+
 import { type FC } from "react";
 import { useTranslationChange } from "i18nano";
 
@@ -6,6 +8,7 @@ const TranslationChange: FC = () => {
 
   return (
     <select
+      className="TranslationChange"
       value={translation.lang}
       onChange={(event) => {
         localStorage.setItem("lang", event.target.value);
