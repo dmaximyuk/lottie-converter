@@ -3,13 +3,16 @@
     "name": "ZLottie",
     "description": "Lottie minifier"
   },
+  "header": {
+    "doc": "Documentation"
+  },
   "home": {
     "seo": {
       "title": "Minifier"
     },
     "dnd": {
-      "upload": "Upload Files",
-      "dnd": "Drag & Drop / Click to choose more!",
+      "title": "Upload Files",
+      "upload": "Drag & Drop / Click to choose more!",
       "warning": "Only support: '.tgs / .json'. Max file size — 10MB."
     }
   }

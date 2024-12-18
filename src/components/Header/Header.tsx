@@ -29,7 +29,7 @@ const Header: FC<HeaderProps> = () => {
         </Link>
         <Flex horizontal="end" vertical="center">
           <Link to={getRoutePath(RouteID.HowToUse)}>
-            <Text className="Header__text">Docs</Text>
+            <Text className="Header__text">{t("header.doc")}</Text>
           </Link>
         </Flex>
       </Flex>

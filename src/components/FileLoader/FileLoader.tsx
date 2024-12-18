@@ -17,13 +17,14 @@ import { dndFilesActions } from "store/dndFiles";
 
 import { IconDragDrop } from "assets/icons";
 import { generateUniqueId } from "utils";
+import { useTranslation } from "i18nano";
 
 interface FileLoaderProps extends AllHTMLAttributes<HTMLElement> {}
 
 const FileLoader: FC<FileLoaderProps> = () => {
   const dndFileLoadingId = `dnd-file-loading-id`;
   const d = useDispatch();
-  const [error, setError] = useState<string | null>(null);
+  const t = useTranslation();
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false);
 
   const allowedExtensions = [".json", ".tgs"];
@@ -89,7 +90,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
         direction="column"
         gap={15}
       >
-        <Title weight="1">Upload Files</Title>
+        <Title weight="1">{t("home.dnd.title")}</Title>
         <motion.div
           className="FileLoader__wrapper"
           style={
@@ -125,8 +126,8 @@ const FileLoader: FC<FileLoaderProps> = () => {
               height={32}
               color="var(--color)"
             />
-            <Text>Drop & drop or click to choose files</Text>
-            <Text>Max file size - 10 MB</Text>
+            <Text>{t("home.dnd.upload")}</Text>
+            <Text>{t("home.dnd.warning")}</Text>
           </Flex>
         </motion.div>
 
