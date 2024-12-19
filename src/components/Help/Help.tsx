@@ -1,6 +1,6 @@
 import "./Help.sass";
 
-import { useCallback, type FC, MouseEvent } from "react";
+import { type FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRoutePath } from "utils";
 
@@ -17,14 +17,9 @@ interface HelpProps {
 const Help: FC<HelpProps> = (props) => {
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(
-    (e: MouseEvent) => {
-      e.stopPropagation();
-      console.log("Card clicked");
-      navigate(getRoutePath(props.to));
-    },
-    [props.to],
-  );
+  const handleOnClick = () => {
+    navigate(getRoutePath(props.to));
+  };
 
   return (
     <Card className="Help" onClick={handleOnClick}>
