@@ -1,17 +1,13 @@
 @import "../../styles/abstracts/_mixins"
 
 .FileLoader
-  --dnd-transition-speed: 0.3s
+  --dnd-transition-speed: 0.2s
   width: 100%
-  max-width: 800px
   overflow: hidden
-  border-radius: 30px
-  border: 1px solid var(--tertiary)
+  border-radius: 10px
+  border: 1px dashed var(--color)
   transition: border .3s
-  background: var(--secondary)
-  box-sizing: border-box
-  padding: 20px
-  max-height: calc(100vh - var(--header-height) - 100px)
+  height: 100%
 
   &__title
     color: var(--text-primary)
@@ -26,29 +22,10 @@
       @include respond("tablet") 
         padding: 0
 
-  &__wrapper
-    border: 1px dashed var(--color)
-    width: 100%
-    aspect-ratio: 3 / 3
-    border-radius: 15px
-    color: var(--color)
-    transition: var(--dnd-transition-speed)
-    box-sizing: border-box
-
-    @include respond("tablet") 
-      aspect-ratio: 3 / 0.75
-  
   &__icon
-    transition: var(--dnd-transition-speed)
+    color: var(--color)
+    transition: color var(--dnd-transition-speed)
 
   &__content
     width: 100%
     height: 100%
-
-  &__container
-    overflow: hidden
-    height: 100%
-    box-sizing: border-box
-
-  &__btn
-    margin-top: 32px

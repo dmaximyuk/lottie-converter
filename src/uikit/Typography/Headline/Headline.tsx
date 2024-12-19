@@ -1,20 +1,22 @@
 import "./Headline.sass";
 
 import { type FC } from "react";
-import classNames from "classnames";
+import cn from "clsx";
 
 import { Typography, TypographyProps } from "uikit";
 
 export type HeadlineProps = TypographyProps;
 
-export const Headline: FC<HeadlineProps> = ({
+const Headline: FC<HeadlineProps> = ({
   className = "",
   Component = "h5",
   ...props
 }) => (
   <Typography
     {...props}
-    className={classNames("Headline", className)}
+    className={cn("Headline", className)}
     Component={Component}
   />
 );
+
+export default Headline;

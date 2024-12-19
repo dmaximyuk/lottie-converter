@@ -10,7 +10,7 @@ import {
 } from "react";
 import { useDispatch } from "react-redux";
 
-import { Flex, Text, Title } from "uikit";
+import { Placeholder, Text, Title } from "uikit";
 import { Files } from "components";
 
 import { dndFilesActions } from "store/dndFiles";
@@ -22,7 +22,6 @@ import { useTranslation } from "i18nano";
 interface FileLoaderProps extends AllHTMLAttributes<HTMLElement> {}
 
 const FileLoader: FC<FileLoaderProps> = () => {
-  const dndFileLoadingId = `dnd-file-loading-id`;
   const fileInputRef = useRef<HTMLInputElement>(null);
   const d = useDispatch();
   const t = useTranslation();
@@ -90,62 +89,32 @@ const FileLoader: FC<FileLoaderProps> = () => {
   };
 
   return (
-    <div className="FileLoader">
-      <Flex
-        className="FileLoader__container"
-        horizontal="start"
-        vertical="start"
-        direction="column"
-        gap={15}
-      >
-        <Title className="FileLoader__title" weight="1">
-          {t("home.dnd.title")}
-        </Title>
-        <div
-          className="FileLoader__wrapper"
-          style={
-            {
-              "--color": isDraggedOver
-                ? "var(--accent)"
-                : "var(--text-secondary)",
-            } as Record<string, unknown>
-          }
-          onDrop={handleGetFiles}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onClick={handleWrapperClick}
-        >
-          <Flex
-            className="FileLoader__content"
-            vertical="center"
-            horizontal="center"
-            direction="column"
-          >
-            <input
-              ref={fileInputRef}
-              type="file"
-              multiple
-              accept={allowedExtensions.join(",")}
-              style={{ display: "none" }}
-              id={dndFileLoadingId}
-              onChange={handleGetFiles}
-            />
+    <div
+      className="FileLoader"
+      onDrop={handleGetFiles}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onClick={handleWrapperClick}
+      style={
+        {
+          "--color": isDraggedOver ? "var(--accent)" : "var(--text-secondary)",
+        } as Record<string, unknown>
+      }
+    >
+      <Placeholder
+        icon={<IconDragDrop color="var(--color)" />}
+        title={t("home.dnd.upload")}
+        subtitle={t("home.dnd.alternative")}
+      />
 
-            <IconDragDrop
-              className="FileLoader__icon"
-              width={32}
-              height={32}
-              color="var(--color)"
-            />
-            <Text className="FileLoader__dnd-text">{t("home.dnd.upload")}</Text>
-            <Text className="FileLoader__dnd-text">
-              {t("home.dnd.warning")}
-            </Text>
-          </Flex>
-        </div>
-
-        <Files />
-      </Flex>
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        accept={allowedExtensions.join(",")}
+        style={{ display: "none" }}
+        onChange={handleGetFiles}
+      />
     </div>
   );
 };

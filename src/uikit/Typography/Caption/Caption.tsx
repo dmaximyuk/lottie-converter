@@ -1,7 +1,7 @@
 import "./Caption.sass";
 
 import { FC } from "react";
-import classNames from "classnames";
+import cn from "clsx";
 
 import { Typography, TypographyProps } from "uikit";
 
@@ -11,7 +11,7 @@ export interface CaptionProps extends Omit<TypographyProps, "plain"> {
   level?: CaptionLevel;
 }
 
-export const Caption: FC<CaptionProps> = ({
+const Caption: FC<CaptionProps> = ({
   level = "1",
   className = "",
   Component = "span",
@@ -19,7 +19,9 @@ export const Caption: FC<CaptionProps> = ({
 }) => (
   <Typography
     {...props}
-    className={classNames("Caption", `Caption__wrapper--${level}`, className)}
+    className={cn("Caption", `Caption__wrapper--${level}`, className)}
     Component={Component}
   />
 );
+
+export default Caption;

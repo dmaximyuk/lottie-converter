@@ -16,7 +16,7 @@ interface DropdownProps {
   }[];
 }
 
-export const Dropdown: FC<DropdownProps> = (props) => {
+const Dropdown: FC<DropdownProps> = (props) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
@@ -31,3 +31,5 @@ export const Dropdown: FC<DropdownProps> = (props) => {
     </div>
   );
 };
+
+export default Dropdown;

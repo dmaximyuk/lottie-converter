@@ -1,7 +1,17 @@
 {
   "app": {
     "name": "ZLottie",
-    "description": "Lottie minifier"
+    "description": "Lottie minifier",
+    "theme": {
+      "title": "Theme",
+      "dark": "Dark",
+      "light": "Light"
+    },
+    "language": {
+      "title": "Language",
+      "en": "English",
+      "ru": "Русский"
+    }
   },
   "header": {
     "doc": "Documentation"
@@ -10,10 +20,40 @@
     "seo": {
       "title": "Minifier"
     },
+    "aside": {
+      "howUse": {
+        "title": "How to use?",
+        "text": "Click to learn"
+      },
+      "whyIs": {
+        "title": "Why is ZLottie?",
+        "text": "Click to learn"
+      },
+      "saved": {
+        "title": "Savings",
+        "subtitle": "Counts how many bytes there were and how many turned out",
+        "prev": "Previous value",
+        "next": "Next value",
+        "all": "Total"
+      }
+    },
     "dnd": {
-      "title": "Unpack '.tgs' into '.json' or compress it into ZLottie",
-      "upload": "Drag & Drop / Click to choose more!",
-      "warning": "Only support: '.tgs / .json'. Max file size — 10MB."
+      "upload": "Drag & Drop files here",
+      "alternative": "Or click me and upload files",
+      "support": {
+        "before": "Support Only",
+        "after": "TGS or JSON"
+      }
+    },
+    "files": {
+      "empty": {
+        "title": "You have not processed any files",
+        "text": "Add at least 1 file and everything will appear!"
+      },
+      "download": {
+        "json": "Download '.json'",
+        "zlottie": "Download '.zlottie'"
+      }
     }
   },
   "howToUse": {

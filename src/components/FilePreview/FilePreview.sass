@@ -6,9 +6,10 @@
   width: 100%
   padding: 15px
   overflow: hidden
-  border-radius: 15px
+  border-radius: 10px
   box-sizing: border-box 
   border: 1px solid var(--tertiary)
+  background: var(--secondary)
 
   &__icon
     display: none
@@ -17,8 +18,12 @@
       display: inline-block
 
   &__text
+    display: flex
+    justify-content: flex-start
+    align-items: center
     width: 100%
     overflow: hidden
+    gap: 15px
 
   &__caption
     white-space: nowrap
@@ -45,6 +50,9 @@
       display: inline-block
   
   &__btn
+    display: flex
+    gap: 10px
+
     &-zlottie, &-json
       position: relative
       cursor: pointer

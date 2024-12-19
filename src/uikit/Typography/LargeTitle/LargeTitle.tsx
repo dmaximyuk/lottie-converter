@@ -1,13 +1,13 @@
 import "./LargeTitle.sass";
 
 import { type FC } from "react";
-import classNames from "classnames";
+import cn from "clsx";
 
 import { Typography, TypographyProps } from "uikit";
 
 export type LargeTitleProps = TypographyProps;
 
-export const LargeTitle: FC<LargeTitleProps> = ({
+const LargeTitle: FC<LargeTitleProps> = ({
   className = "",
   Component = "h1",
   ...props
@@ -15,6 +15,8 @@ export const LargeTitle: FC<LargeTitleProps> = ({
   <Typography
     {...props}
     Component={Component}
-    className={classNames("LargeTitle", className)}
+    className={cn("LargeTitle", className)}
   />
 );
+
+export default LargeTitle;

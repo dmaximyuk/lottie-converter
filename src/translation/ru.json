@@ -1,31 +1,71 @@
 {
   "app": {
     "name": "ZLottie",
-    "description": "Lottie минификатор"
+    "description": "Lottie minifier",
+    "theme": {
+      "title": "Theme",
+      "dark": "Dark",
+      "light": "Light"
+    },
+    "language": {
+      "title": "Language",
+      "en": "English",
+      "ru": "Русский"
+    }
   },
   "header": {
-    "doc": "Документация"
+    "doc": "Documentation"
   },
   "home": {
     "seo": {
-      "title": "Минификатор"
+      "title": "Minifier"
+    },
+    "aside": {
+      "howUse": {
+        "title": "How to use?",
+        "text": "Click to learn"
+      },
+      "whyIs": {
+        "title": "Why is ZLottie?",
+        "text": "Click to learn"
+      },
+      "saved": {
+        "title": "Savings",
+        "subtitle": "Counts how many bytes there were and how many turned out",
+        "prev": "Previous value",
+        "next": "Next value",
+        "all": "Total"
+      }
     },
     "dnd": {
-      "title": "Распаковать '.tgs' в '.json' или сжать в ZLottie",
-      "upload": "Drag & Drop / Нажмите, чтобы выбрать!",
-      "warning": "Поддерживает только: '.tgs / .json'. Максимальный размер — 10MB."
+      "upload": "Drag & Drop files here",
+      "alternative": "Or click me and upload files",
+      "support": {
+        "before": "Support Only",
+        "after": "TGS or JSON"
+      }
+    },
+    "files": {
+      "empty": {
+        "title": "You have not processed any files",
+        "text": "Add at least 1 file and everything will appear!"
+      },
+      "download": {
+        "json": "Download '.json'",
+        "zlottie": "Download '.zlottie'"
+      }
     }
   },
   "howToUse": {
-    "title": "Инструкция по использованию 'ZLottie'. Как распаковать Lottie из zlib.",
-    "subtitle": "Прежде всего хочу поблагодарить за доверие и использование ZLottie!",
-    "text": "Что такое ZLottie? Это Lottie в формате 'zlib'. Но не все так просто... \r\n Моя цель заключалась в том, чтобы создать способ сжатия и распаковки больших файлов, и к тому же возникла проблема с очень большим размером анимации Lottie, которые могут весить несколько мегабайт (!!!). Позже мне подсказали, что можно использовать формат GZIP. И да, это существенно уменьшило размер, но, как всегда, есть к чему стремиться! Так и получилось ZLottie. Что это? Это файл, сжатый с помощью zlib в zlib-raw (просто так его не распаковать). В итоге размер существенно снизился! (в некоторых случах размер уменьшается до 8 (!!!) раз, только представьте, какая это экономия!). Но есть и жертвы! В чём же дело… Необходимо промежуточное ПО для распаковки. Это не выглядит проблемой, если честно. Распаковка крайне быстрая, и в любом случае, на момент ленивой загрузки у вас должно быть сообщение-заполнитель. Как итог, эта проблема абсолютно незаметна. Распаковка занимает ≤ 0,1 мс, а скачивание 500 Кб может достигать 30 секунд! К тому же, библиотека для распаковки весит всего 4 Кб в продакшене, а если используется только одна функция — ещё меньше после встряхивания.",
+    "title": "Instructions for using 'ZLottie'",
+    "subtitle": "First of all, I want to thank you for trusting and using ZLottie!",
+    "text": "What is ZLottie? This is a Lottie in the 'zlib' format. But it's not that simple... \r\n My goal was to create a way to compress and decompress large files, and besides, there was a problem with the very large size of Lottie animations, which can weigh several megabytes (!!!). Later, I was prompted that the GZIP format could be used. And yes, it has significantly reduced the size, but, as always, there is something to strive for! That's how ZLottie turned out. What's it? This is a file compressed using zlib in zlib-raw (you just can't unpack it like that). As a result, the size has decreased significantly! (in some cases, the size is reduced to 8 (!!!) once, just imagine what a saving it is!). But there are also victims! What's the matter… Middleware is needed for unpacking. It doesn't look like a problem, to be honest. Unpacking is extremely fast, and in any case, you should have a placeholder message at the time of lazy loading. As a result, this problem is completely invisible. Unpacking takes less than 0.1 ms, and downloading 500 KB can take up to 30 seconds! In addition, the library for unpacking weighs only 4 KB in production, and if only one function is used, even less after shaking.",
     "usages": {
-      "0": "Из библиотеки Lottie-Web был получен Lottie-Web Light! (Примерно в x2 раза меньше чем обычный Lottie-Web);",
-      "1": "fflate - библиотека для распаковки. Если проверить через 'bundlephobia', то вес библиотеки на момент написания статьи всего 4кб;",
+      "0": "Lottie-Web Light was obtained from the Lottie-Web library! (About x2 times less than the usual Lottie-Web);",
+      "1": "fflate is a library for unpacking. If you check through 'bundlephobia', then the weight of the library at the time of writing is only 4 kb;",
       "2": "zlottie =)"
     },
-    "copy": "Скопировать!",
-    "openInGitHub": "Посмотреть в GitHub"
+    "copy": "Copy code!",
+    "openInGitHub": "View in GitHub"
   }
 }

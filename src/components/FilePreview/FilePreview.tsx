@@ -1,12 +1,14 @@
 import "./FilePreview.sass";
 
 import { FC } from "react";
+import { useTranslation } from "i18nano";
 import { downloadFile } from "utils";
 
-import { Caption, Flex, Text } from "uikit";
+import { Caption, Text } from "uikit";
 
 import { type ProcessingFileResponse } from "models";
 import { type DndFilesState } from "store/dndFiles/interface";
+
 import { IconDownload, IconFile, IconZipped } from "assets/icons";
 
 interface FilePreviewProps {
@@ -14,6 +16,7 @@ interface FilePreviewProps {
 }
 
 const FilePreview: FC<FilePreviewProps> = (props) => {
+  const t = useTranslation();
   const processing = "Processing...";
 
   const getName = (): { name: string; extension: string } => {
@@ -42,19 +45,14 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
 
   return (
     <div className="FilePreview">
-      <Flex
-        className="FilePreview__text"
-        horizontal="start"
-        vertical="center"
-        gap={15}
-      >
+      <div className="FilePreview__text">
         <IconFile
           className="FilePreview__icon"
           width={24}
           height={24}
           color={"var(--accent)"}
         />
-        <Flex direction="column" horizontal="center" vertical="start" gap={0}>
+        <div>
           <Text className="FilePreview__caption">
             {getName().name || processing}
           </Text>
@@ -62,24 +60,28 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
             {getSize("default")} {" | "}
             {getSize("compressed")}
           </Caption>
-        </Flex>
-      </Flex>
-      <Flex horizontal="space-between" vertical="center" gap={15}>
+        </div>
+      </div>
+      <div className="FilePreview__btn">
         <a
           className="FilePreview__btn-json"
           onClick={() => handleDownloadFile("default")}
         >
-          <Caption className="FilePreview__tooltip">Download JSON</Caption>
+          <Caption className="FilePreview__tooltip">
+            {t("home.files.download.json")}
+          </Caption>
           <IconDownload width={20} height={20} />
         </a>
         <a
           className="FilePreview__btn-zlottie"
           onClick={() => handleDownloadFile("compressed")}
         >
-          <Caption className="FilePreview__tooltip">Download ZLOTTIE</Caption>
+          <Caption className="FilePreview__tooltip">
+            {t("home.files.download.zlottie")}
+          </Caption>
           <IconZipped width={20} height={20} />
         </a>
-      </Flex>
+      </div>
     </div>
   );
 };

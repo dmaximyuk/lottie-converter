@@ -4,3 +4,7 @@ export { default as IconDownload } from "./download.svg?react";
 export { default as IconFile } from "./file.svg?react";
 export { default as IconCopy } from "./copy.svg?react";
 export { default as IconChevron } from "./chevron-up.svg?react";
+export { default as IconArrowDown } from "./arrow-down.svg?react";
+export { default as IconDatabaseDollar } from "./database-dollar.svg?react";
+export { default as IconBrush } from "./brush.svg?react";
+export { default as IconLanguage } from "./language.svg?react";

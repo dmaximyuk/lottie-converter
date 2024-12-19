@@ -2,7 +2,7 @@ import "./Subheadline.sass";
 
 import { forwardRef } from "react";
 
-import classNames from "classnames";
+import cn from "clsx";
 
 import { Typography, TypographyProps } from "uikit";
 
@@ -12,7 +12,7 @@ export interface SubheadlineProps extends Omit<TypographyProps, "level"> {
   level?: SubheadlineLevel;
 }
 
-export const Subheadline = forwardRef(
+const Subheadline = forwardRef(
   (
     {
       level = "1",
@@ -25,12 +25,10 @@ export const Subheadline = forwardRef(
     <Typography
       {...restProps}
       ref={ref}
-      className={classNames(
-        "Subheadline",
-        `Subheadline__wrapper--${level}`,
-        className,
-      )}
+      className={cn("Subheadline", `Subheadline__wrapper--${level}`, className)}
       Component={Component}
     />
   ),
 );
+
+export default Subheadline;

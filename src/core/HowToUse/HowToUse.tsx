@@ -5,7 +5,7 @@ import { useTranslation } from "i18nano";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import { Page } from "components";
-import { Text, Title, Caption, Button, Flex } from "uikit";
+import { Text, Title, Caption, Button } from "uikit";
 
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { IconCopy } from "assets/icons";
@@ -140,16 +140,12 @@ const HowToUse: FC<HowToUseProps> = () => {
       </ol>
 
       <div className="HowToUse__code">
-        <Flex
-          className="HowToUse__code-header"
-          horizontal="space-between"
-          vertical="center"
-        >
+        <div className="HowToUse__code-header">
           <Caption weight="2">LottiWeb.tsx</Caption>
           <Button isSquare type="accent" size="s" onClick={handleCopy}>
             <IconCopy width={20} height={20} color="var(--background)" />
           </Button>
-        </Flex>
+        </div>
         <SyntaxHighlighter language="tsx" style={vscDarkPlus}>
           {lottiWebCode}
         </SyntaxHighlighter>

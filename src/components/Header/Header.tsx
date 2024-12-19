@@ -6,8 +6,7 @@ import { useTranslation } from "i18nano";
 import { getRoutePath } from "utils";
 
 import { Link } from "react-router-dom";
-import { ThemeChange, TranslationChange } from "components";
-import { Flex, Title, Text } from "uikit";
+import { Title } from "uikit";
 
 import { RouteID } from "models";
 
@@ -18,24 +17,13 @@ const Header: FC<HeaderProps> = () => {
 
   return (
     <nav className="Header">
-      <Flex
-        className="Header__container"
-        horizontal="space-between"
-        vertical="center"
-      >
+      <div className="Header__container">
         <Link to={getRoutePath(RouteID.Home)}>
           <Title className="Header__text" weight="1">
             ZLottie
           </Title>
         </Link>
-        <Flex horizontal="end" vertical="center" gap={15}>
-          <Link to={getRoutePath(RouteID.HowToUse)}>
-            <Text className="Header__text">{t("header.doc")}</Text>
-          </Link>
-          <TranslationChange />
-          <ThemeChange />
-        </Flex>
-      </Flex>
+      </div>
     </nav>
   );
 };

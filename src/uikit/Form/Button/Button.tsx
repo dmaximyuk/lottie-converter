@@ -13,7 +13,7 @@ interface ButtonProps
   isSquare?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({
+const Button: FC<ButtonProps> = ({
   type = "default",
   mode = "default",
   size = "s",
@@ -42,3 +42,5 @@ export const Button: FC<ButtonProps> = ({
     />
   );
 };
+
+export default Button;

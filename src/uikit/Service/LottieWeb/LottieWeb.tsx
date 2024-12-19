@@ -23,7 +23,7 @@ interface LottieWebProps {
  * Lightweight Lottie animation player component.
  * @param {LottieWebProps} props - Component properties.
  */
-export const LottieWeb: FC<LottieWebProps> = ({
+const LottieWeb: FC<LottieWebProps> = ({
   animationData,
   loop = true,
   autoplay = true,
@@ -99,3 +99,5 @@ export const LottieWeb: FC<LottieWebProps> = ({
     />
   );
 };
+
+export default LottieWeb;
