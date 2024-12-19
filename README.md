@@ -2,6 +2,9 @@
 
 ZLottie is an innovative solution for compressing and decompressing Lottie animations, enabling significant file size reduction while maintaining compatibility. This project is designed to address modern performance demands and minimize data transfer costs.
 
+## 💫 Web Page
+Deployed here: [link](https://google.com)
+
 ## 🤔 Why ZLottie?
 
 ### 🅵 The "Z" in the Name  
@@ -10,10 +13,13 @@ The "Z" in ZLottie refers to the **zlib** compression format. Zlib is more effic
 ### 🛠️ Raw Zlib Compression  
 ZLottie uses raw zlib compression to achieve optimal size reduction for your Lottie files.
 
+### 😣 Why not Gzip?
+Initially, everything was written in Gzip, but when I discovered that Zlib saves a couple of kb, I rewrote everything to Zlib. For example, compressed animation in Gzip can weigh about 65 kb, while in Zlib it is about 58 kb. I think it is also essential. And that's why the RAW format is "saving on matches", where the bill goes to bytes.
+
 ### 🔄 Pako for Compression, fflate for Decompression  
 ZLottie leverages **Pako** for compressing animations and **fflate** for decompression on the client side. While there are minor losses in decompression performance when using fflate, the overall tradeoff is still favorable compared to downloading a standard 500 KB Lottie file.
 
-### 💡 Not Just Saving Bytes—Saving Megabytes  
+### 💡 Not Just Saving Bytes — Saving Megabytes  
 This is not about saving a few kilobytes; it’s about saving **megabytes** of bandwidth, which can result in substantial cost reductions for projects serving large audiences.
 
 ## ✅ Proven Performance  
@@ -23,7 +29,6 @@ ZLottie has been tested in two real-world projects, demonstrating its effectiven
 We plan to migrate compression to **WebAssembly (WASM)** in the future, which promises even better performance and flexibility. However, due to certain browser limitations and the current state of my WebAssembly expertise, this feature is not yet implemented.
 
 ## 🙎️ Contacts
-
 If you have any questions, feel free to reach out:
 
 - **Email**: d_maksimyk@vk.com
