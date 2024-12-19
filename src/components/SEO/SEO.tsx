@@ -1,9 +1,10 @@
 import { type FC } from "react";
 
-import { LANG } from "vars";
 import { useTranslation } from "i18nano";
 
 import { Helmet } from "react-helmet";
+
+import { LANG, THEME } from "vars";
 
 const SEO: FC = () => {
   const t = useTranslation();
@@ -15,6 +16,7 @@ const SEO: FC = () => {
       }}
     >
       <meta name="description" content={t("app.description")} />
+      <body data-theme={THEME} />
     </Helmet>
   );
 };

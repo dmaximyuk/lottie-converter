@@ -6,7 +6,7 @@ import { useTranslation } from "i18nano";
 import { getRoutePath } from "utils";
 
 import { Link } from "react-router-dom";
-import { TranslationChange } from "components";
+import { ThemeChange, TranslationChange } from "components";
 import { Flex, Title, Text } from "uikit";
 
 import { RouteID } from "models";
@@ -33,6 +33,7 @@ const Header: FC<HeaderProps> = () => {
             <Text className="Header__text">{t("header.doc")}</Text>
           </Link>
           <TranslationChange />
+          <ThemeChange />
         </Flex>
       </Flex>
     </nav>

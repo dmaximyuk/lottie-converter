@@ -3,8 +3,7 @@ import "./FilePreview.sass";
 import { FC } from "react";
 import { downloadFile } from "utils";
 
-import { motion } from "motion/react";
-import { Button, Caption, Flex, Text } from "uikit";
+import { Caption, Flex, Text } from "uikit";
 
 import { type ProcessingFileResponse } from "models";
 import { type DndFilesState } from "store/dndFiles/interface";
@@ -13,11 +12,6 @@ import { IconDownload, IconFile, IconZipped } from "assets/icons";
 interface FilePreviewProps {
   file: DndFilesState["files"][0];
 }
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
 
 const FilePreview: FC<FilePreviewProps> = (props) => {
   const processing = "Processing...";
@@ -47,7 +41,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
   };
 
   return (
-    <motion.div className="FilePreview" variants={itemVariants}>
+    <div className="FilePreview">
       <Flex
         className="FilePreview__text"
         horizontal="start"
@@ -86,7 +80,7 @@ const FilePreview: FC<FilePreviewProps> = (props) => {
           <IconZipped width={20} height={20} />
         </a>
       </Flex>
-    </motion.div>
+    </div>
   );
 };
 

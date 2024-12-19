@@ -10,7 +10,6 @@ import {
 } from "react";
 import { useDispatch } from "react-redux";
 
-import { motion } from "motion/react";
 import { Flex, Text, Title } from "uikit";
 import { Files } from "components";
 
@@ -102,7 +101,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
         <Title className="FileLoader__title" weight="1">
           {t("home.dnd.title")}
         </Title>
-        <motion.div
+        <div
           className="FileLoader__wrapper"
           style={
             {
@@ -115,9 +114,6 @@ const FileLoader: FC<FileLoaderProps> = () => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onClick={handleWrapperClick}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
         >
           <Flex
             className="FileLoader__content"
@@ -146,7 +142,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
               {t("home.dnd.warning")}
             </Text>
           </Flex>
-        </motion.div>
+        </div>
 
         <Files />
       </Flex>
