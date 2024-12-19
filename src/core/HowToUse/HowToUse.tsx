@@ -122,7 +122,7 @@ const HowToUse: FC<HowToUseProps> = () => {
         {t("howToUse.title")}
       </Title>
       <a
-        href="https://github.com/dmaximyuk/zloottie/blob/master/src/uikit/Service/LottieWeb/LottieWeb.tsx"
+        href="https://github.com/dmaximyuk/zlottie/blob/master/src/uikit/Service/LottieWeb/LottieWeb.tsx"
         target="_blank"
       >
         <Caption>{t("howToUse.openInGitHub")}</Caption>
