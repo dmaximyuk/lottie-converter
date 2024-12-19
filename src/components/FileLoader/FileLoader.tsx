@@ -6,6 +6,7 @@ import {
   type FC,
   type DragEvent,
   type ChangeEvent,
+  useRef,
 } from "react";
 import { useDispatch } from "react-redux";
 
@@ -23,6 +24,7 @@ interface FileLoaderProps extends AllHTMLAttributes<HTMLElement> {}
 
 const FileLoader: FC<FileLoaderProps> = () => {
   const dndFileLoadingId = `dnd-file-loading-id`;
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const d = useDispatch();
   const t = useTranslation();
   const [isDraggedOver, setIsDraggedOver] = useState<boolean>(false);
@@ -81,6 +83,13 @@ const FileLoader: FC<FileLoaderProps> = () => {
     setIsDraggedOver(false);
   };
 
+  const handleWrapperClick = () => {
+    const input = fileInputRef.current;
+    if (input) {
+      input.click();
+    }
+  };
+
   return (
     <div className="FileLoader">
       <Flex
@@ -105,6 +114,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
           onDrop={handleGetFiles}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
+          onClick={handleWrapperClick}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
@@ -116,6 +126,7 @@ const FileLoader: FC<FileLoaderProps> = () => {
             direction="column"
           >
             <input
+              ref={fileInputRef}
               type="file"
               multiple
               accept={allowedExtensions.join(",")}
