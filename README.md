@@ -3,7 +3,7 @@
 ZLottie is an innovative solution for compressing and decompressing Lottie animations, enabling significant file size reduction while maintaining compatibility. This project is designed to address modern performance demands and minimize data transfer costs.
 
 ## 💫 Web Page
-Deployed here: [link](https://google.com)
+Deployed here: [link](https://dmaximyuk.github.io/zlottie/)
 
 ## 🤔 Why ZLottie?
 
