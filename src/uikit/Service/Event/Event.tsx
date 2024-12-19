@@ -29,9 +29,10 @@ const Event: FC<EventProps> = ({
 
     setMouseClicked(true);
 
+    onClick && onClick(e as any);
+
     setTimeout(() => {
       setMouseClicked((s) => {
-        onClick && onClick(e as any);
         s = false;
         return s;
       });
