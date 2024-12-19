@@ -26,6 +26,6 @@ const pages: RouteObject[] = [
 ];
 
 const routes = removeUnnecessary(pages);
-const router = createBrowserRouter(routes, { basename: "/" });
+const router = createBrowserRouter(routes, { basename: "/zlottie" });
 
 export { pages, routes, router };

@@ -6,7 +6,7 @@ import { defaultConfig } from "./default.config";
 
 export default defineConfig({
   ...defaultConfig,
-  base: "/",
+  base: "/zlottie",
   build: {
     sourcemap: false,
     cssCodeSplit: true,
