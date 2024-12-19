@@ -13,10 +13,15 @@
   padding: 20px
   max-height: calc(100vh - var(--header-height) - 100px)
 
+  &__title
+    color: var(--text-primary)
+
   &__dnd
     &-text
+      color: var(--color)
       text-align: center
       padding: 4px 12px
+      transition: color var(--dnd-transition-speed)
 
       @include respond("tablet") 
         padding: 0

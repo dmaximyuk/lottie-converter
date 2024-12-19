@@ -90,12 +90,16 @@ const FileLoader: FC<FileLoaderProps> = () => {
         direction="column"
         gap={15}
       >
-        <Title weight="1">{t("home.dnd.title")}</Title>
+        <Title className="FileLoader__title" weight="1">
+          {t("home.dnd.title")}
+        </Title>
         <motion.div
           className="FileLoader__wrapper"
           style={
             {
-              "--color": isDraggedOver ? "var(--accent)" : "var(--tertiary)",
+              "--color": isDraggedOver
+                ? "var(--accent)"
+                : "var(--text-secondary)",
             } as Record<string, unknown>
           }
           onDrop={handleGetFiles}
