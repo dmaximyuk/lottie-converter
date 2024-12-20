@@ -4,6 +4,6 @@ export const LANG = (
     | undefined
 )?.slice(0, 2);
 
-export const THEME = (localStorage.getItem("theme") || "light") as
-  | "dark"
-  | "light";
+export const themes = ["light", "dark"] as const;
+export const THEME = (localStorage.getItem("theme") ||
+  "light") as (typeof themes)[number];

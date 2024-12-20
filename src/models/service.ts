@@ -1,7 +1,10 @@
-export enum RouteID {
+export const enum RouteID {
   App = "app",
 
   Home = "home",
+}
 
-  HowToUse = "howToUse",
+export const enum ModalID {
+  Theme = "theme",
+  Language = "language",
 }

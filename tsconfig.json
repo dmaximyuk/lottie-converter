@@ -29,7 +29,8 @@
       "functions": ["functions"],
       "routes": ["routes"],
       "models": ["models"],
-      "vars": ["vars"]
+      "vars": ["vars"],
+      "modals": ["modals"]
     },
     "composite": true
   },

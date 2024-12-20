@@ -1,0 +1,51 @@
+.ThemeCard
+  cursor: pointer
+
+  &_active
+    border: 1px solid var(--accent) !important
+
+    & ~ p
+      color: var(--accent) !important
+      opacity: 1
+
+  & > p
+    text-align: center
+    margin-top: 6px
+
+    &::first-letter
+      text-transform: uppercase
+    
+  &__content
+    width: 100px
+    aspect-ratio: 2 / 1.5
+    position: relative
+    overflow: hidden
+    border-radius: 10px
+  
+  &_light
+    background:  var(--light-theme_background)
+    border: 1px solid var(--dark-theme_background)
+
+    &::before
+      content: ""
+      background: var(--light-theme_secondary)
+      width: 100%
+      aspect-ratio: 1 / 1
+      border-radius: 999999px
+      position: absolute
+      left: -50%
+      top: -50%
+
+  &_dark
+    background: var(--dark-theme_background)
+    border: 1px solid var(--light-theme_background)
+
+    &::before
+      content: ""
+      background: var(--dark-theme_secondary)
+      width: 100%
+      aspect-ratio: 1 / 1
+      border-radius: 999999px
+      position: absolute
+      right: -50%
+      top: -50%

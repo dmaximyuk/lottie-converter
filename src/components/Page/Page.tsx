@@ -2,7 +2,8 @@ import "./Page.sass";
 
 import { AllHTMLAttributes, FC } from "react";
 import cn from "clsx";
-import clsx from "clsx";
+
+import { ModalProvider } from "modals";
 
 interface PageProps extends AllHTMLAttributes<HTMLElement> {
   containerClassName?: string;
@@ -10,11 +11,14 @@ interface PageProps extends AllHTMLAttributes<HTMLElement> {
 
 const Page: FC<PageProps> = (props) => {
   return (
-    <section className={clsx("Page", props.className)}>
-      <div className={cn("Page__container", props.containerClassName)}>
-        {props.children}
-      </div>
-    </section>
+    <>
+      <ModalProvider />
+      <section className={cn("Page", props.className)}>
+        <div className={cn("Page__container", props.containerClassName)}>
+          {props.children}
+        </div>
+      </section>
+    </>
   );
 };
 

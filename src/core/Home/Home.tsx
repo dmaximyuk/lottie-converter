@@ -3,6 +3,7 @@ import "./Home.sass";
 import { type FC } from "react";
 import { useTranslation } from "i18nano";
 import { useSelector } from "react-redux";
+import { useModal } from "hooks";
 import { objectToArray } from "utils";
 
 import { FileLoader, Files, Help, Page, ResourceCell } from "components";
@@ -17,6 +18,8 @@ import {
   IconLanguage,
 } from "assets/icons";
 
+import { ModalID } from "models";
+
 import { LANG, THEME } from "vars";
 
 const saveCells = ["prev", "next", "all"] as const;
@@ -24,6 +27,7 @@ const saveCells = ["prev", "next", "all"] as const;
 const Home: FC = () => {
   const t = useTranslation();
   const { files } = useSelector(dndFilesSelector);
+  const { openModal } = useModal();
 
   const getFilesSize = (type: "compressed" | "default") => {
     const arr = objectToArray(files);
@@ -94,13 +98,17 @@ const Home: FC = () => {
         </div>
         <div className="Home_flex">
           <Cell
-            onClick={() => {}}
+            onClick={() => {
+              openModal(ModalID.Theme);
+            }}
             icon={<IconBrush />}
             title={t(`app.theme.title`)}
             text={t(`app.theme.${THEME}`)}
           />
           <Cell
-            onClick={() => {}}
+            onClick={() => {
+              openModal(ModalID.Language);
+            }}
             icon={<IconLanguage />}
             title={t(`app.language.title`)}
             text={t(`app.language.${LANG}`)}

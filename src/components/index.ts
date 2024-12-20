@@ -6,3 +6,4 @@ export { default as FilePreview } from "./FilePreview/FilePreview";
 export { default as Files } from "./Files/Files";
 export { default as Help } from "./Help/Help";
 export { default as ResourceCell } from "./ResourceCell/ResourceCell";
+export { default as ThemeCard } from "./ThemeCard/ThemeCard";

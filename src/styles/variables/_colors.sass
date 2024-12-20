@@ -1,4 +1,9 @@
 body
+  --light-theme_background: #F4F4F4
+  --light-theme_secondary: #ffffff
+  --dark-theme_background: #171717
+  --dark-theme_secondary: #262626
+
   --red: #F54F4F
   --green: #24D33E
   --purple: #E530D9
@@ -6,8 +11,8 @@ body
   --active: #95cbf5
   --hover: #EBEFF9
   
-  --background: #F4F4F4
-  --secondary: #ffffff
+  --background: var(--light-theme_background)
+  --secondary: var(--light-theme_secondary)
   --tertiary: #d1d1d1
   --primary: #32353e
 
@@ -20,8 +25,8 @@ body
     --active: #28292B
     --hover: #5D6169
 
-    --background: #171717
-    --secondary: #262626
+    --background: var(--dark-theme_background)
+    --secondary: var(--dark-theme_secondary)
     --tertiary: #353535
 
     --text-primary: #FFFFFF
