@@ -1,4 +1,4 @@
-import { App, Home, HowToUse } from "core";
+import { App, Home } from "core";
 import { removeUnnecessary } from "utils";
 
 import { createBrowserRouter, type RouteObject } from "react-router-dom";
@@ -15,11 +15,6 @@ const pages: RouteObject[] = [
         id: RouteID.Home,
         path: "/",
         element: <Home />,
-      },
-      {
-        id: RouteID.HowToUse,
-        path: "/how-to-use",
-        element: <HowToUse />,
       },
     ],
   },
