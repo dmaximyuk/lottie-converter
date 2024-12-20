@@ -36,7 +36,6 @@ If you have any questions, feel free to reach out:
 - **GitHub**: https://github.com/dmaximyuk
 
 ## 📄 License  
-This template is publicly available for any use.  
-Feel free to use, modify, and share it!  
+We are for openness and accessibility. You can rewrite and modify as you like. Feel free to do it. I will also be glad if you share it with others!
 
 > Give ZLottie a try today and experience the benefits of smarter compression for your Lottie animations!
