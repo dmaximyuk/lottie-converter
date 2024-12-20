@@ -40,7 +40,7 @@ const LottieWeb: FC<LottieWebProps> = ({
    */
   const decompressAnimation = (compressedData: Uint8Array): Promise<any> =>
     /**
-     * Important!
+     * ! Important!
      * You will initially have string/etc in `compressedData`.
      * You will need to convert from string/etc to Uint8Array!!!
      */
