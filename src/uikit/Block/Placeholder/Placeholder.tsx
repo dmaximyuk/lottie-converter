@@ -21,7 +21,7 @@ const Placeholder: FC<PlaceholderProps> = (props) => {
       <div className="Placeholder__icon">{props.icon}</div>
       <div className="Placeholder__typography">
         <Title weight="1">{props.title}</Title>
-        <Text>{props.subtitle}</Text>
+        <Text isDescription>{props.subtitle}</Text>
       </div>
     </div>
   );

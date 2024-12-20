@@ -10,8 +10,6 @@ import { Caption, Separator, Title, Text, Cell } from "uikit";
 
 import { dndFilesSelector } from "store/dndFiles";
 
-import { RouteID } from "models";
-
 import {
   IconArrowDown,
   IconBrush,
