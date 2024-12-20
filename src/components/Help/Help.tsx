@@ -1,24 +1,18 @@
 import "./Help.sass";
 
 import { type FC } from "react";
-import { useNavigate } from "react-router-dom";
-import { getRoutePath } from "utils";
 
 import { Card, Text, Title } from "uikit";
 
-import { RouteID } from "models";
-
 interface HelpProps {
-  to: RouteID;
+  to: string;
   title: string;
   text: string;
 }
 
 const Help: FC<HelpProps> = (props) => {
-  const navigate = useNavigate();
-
   const handleOnClick = () => {
-    navigate(getRoutePath(props.to));
+    window.open(props.to, "_blank");
   };
 
   return (

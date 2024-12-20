@@ -92,16 +92,6 @@ The `LottieWeb` component uses the `lottie-web` library to render animations. Th
 - Customizable playback behavior with `loop` and `autoplay` options.
 - Adjustable container size with the `size` prop.
 
-## Styling
-
-To style the animation container, you can use the `.LottieWeb` CSS class. The default inline styles control the width and height based on the `size` prop.
-
-```sass
-.LottieWeb
-  display: inline-block
-  overflow: hidden
-```
-
 ## Troubleshooting
 
 1. **Animation not displaying**:

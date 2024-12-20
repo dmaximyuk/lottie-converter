@@ -53,14 +53,16 @@ const Home: FC = () => {
     <Page className="Home" containerClassName="Home_grid">
       <div className="Home__aside">
         <Help
-          to={RouteID.HowToUse}
+          to={"https://github.com/dmaximyuk/zlottie"}
           title={t("home.aside.whyIs.title")}
           text={t("home.aside.whyIs.text")}
         />
       </div>
       <div className="Home__aside">
         <Help
-          to={RouteID.HowToUse}
+          to={
+            "https://github.com/dmaximyuk/zlottie/tree/master/src/uikit/Service/LottieWeb"
+          }
           title={t("home.aside.howUse.title")}
           text={t("home.aside.howUse.text")}
         />
